@@ -58,12 +58,12 @@ function App() {
       {/* Navegação */}
       <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-22">
             <div className="flex items-center">
               <img 
                 src="/images/pinte-logo.png" 
                 alt="Logo da Empresa" 
-                className="h-16 w-auto"
+                className="h-24 w-auto"
               />
             </div>
             <div className="hidden md:block">
