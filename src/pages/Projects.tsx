@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Using the existing photos in the project
@@ -62,17 +63,36 @@ const Projects = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-50 min-h-screen py-16">
-      {/* Back Button */}
-      <button 
-        onClick={() => navigate('/')} 
-        className="fixed top-6 left-6 bg-white text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg font-medium text-sm transition border border-gray-200 flex items-center gap-2 shadow-sm z-50"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        Voltar
-      </button>
+    <div className="bg-gray-50 min-h-screen">
+      {/* Navegação */}
+      <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-22">
+            <div className="flex items-center">
+              <img 
+                src="/images/pinte-logo.png" 
+                alt="Logo da Empresa" 
+                className="h-24 w-auto"
+                onClick={() => navigate('/')}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a onClick={() => navigate('/')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Início</a>
+                <a className="text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Portfólio</a>
+                <a onClick={() => navigate('/#about')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Sobre</a>
+                <a onClick={() => navigate('/#contact')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Contato</a>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-lg font-medium transition">
+                Solicitar Orçamento
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

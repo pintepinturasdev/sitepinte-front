@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // Extended project data with all required fields
@@ -93,9 +93,33 @@ const ProjectDetail: React.FC = () => {
   const currentId = parseInt(id || '1');
   const project = projectsData.find(p => p.id === currentId);
   
+  // Handle browser back button navigation
+  useEffect(() => {
+    // Add a history entry for the projects page
+    window.history.pushState(null, '', '/projects');
+    
+    // Then push the current URL on top of it
+    window.history.pushState(null, '', window.location.pathname);
+    
+    // Create a function to handle popstate (back button) events
+    const handlePopState = () => {
+      // When back button is clicked, we'll be at the /projects URL
+      // No need to do anything else
+    };
+    
+    // Add event listener for back button
+    window.addEventListener('popstate', handlePopState);
+    
+    // Clean up event listener when component unmounts
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+  
   // Navigation functions
   const navigateToProject = (projectId: number) => {
-    navigate(`/project/${projectId}`);
+    // Use replace to avoid building up history stack
+    navigate(`/project/${projectId}`, { replace: true });
   };
   
   const goToPrevious = () => {
@@ -127,7 +151,7 @@ const ProjectDetail: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-600">
+    <div className="min-h-screen bg-gray-200">
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
