@@ -203,25 +203,22 @@ function App() {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-              Some Of My Works
+              Empreendimentos Realizados
             </h2>
             
             {/* Category Tabs */}
             <div className="flex flex-wrap justify-center gap-2 mb-12">
               <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium text-sm transition">
-                Exterior Painting
+                Construção Civil
               </button>
               <button className="bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-6 py-3 rounded-lg font-medium text-sm transition border border-gray-200">
-                Restoration
+                Comercial
               </button>
               <button className="bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-6 py-3 rounded-lg font-medium text-sm transition border border-gray-200">
-                Commercial
+                Residencial
               </button>
               <button className="bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-6 py-3 rounded-lg font-medium text-sm transition border border-gray-200">
-                Residential
-              </button>
-              <button className="bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-6 py-3 rounded-lg font-medium text-sm transition border border-gray-200">
-                Waterproofing
+                Industrial
               </button>
             </div>
           </div>
