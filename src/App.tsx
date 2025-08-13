@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 const portfolioImages = [
   // Nomes dos arquivos de imagem de exemplo, usuário pode substituir depois
-  { src: "/images/building1.jpg", name: "Edifício Aurora", location: "Fortaleza, CE" },
-  { src: "/images/building2.jpg", name: "Residencial Verde", location: "Caucaia, CE" },
-  { src: "/images/building3.jpg", name: "Torre Sul", location: "Aquiraz, CE" },
-  { src: "/images/building4.jpg", name: "Condomínio Atlântico", location: "Fortaleza, CE" },
-  { src: "/images/building5.jpg", name: "Edifício Sol", location: "Eusébio, CE" },
-  { src: "/images/building6.jpg", name: "Residencial Jardim", location: "Maracanaú, CE" },
-  { src: "/images/building7.jpg", name: "Torre Norte", location: "Fortaleza, CE" },
-  { src: "/images/building8.jpg", name: "Edifício Mar", location: "Cumbuco, CE" },
-  { src: "/images/building9.jpg", name: "Residencial Lagoa", location: "Pacatuba, CE" },
+  { id: 1, src: "/images/building1.jpg", name: "Edifício Aurora", location: "Fortaleza, CE" },
+  { id: 2, src: "/images/building2.jpg", name: "Residencial Verde", location: "Caucaia, CE" },
+  { id: 3, src: "/images/building3.jpg", name: "Torre Sul", location: "Aquiraz, CE" },
+  { id: 4, src: "/images/building4.jpg", name: "Condomínio Atlântico", location: "Fortaleza, CE" },
+  { id: 5, src: "/images/building5.jpg", name: "Edifício Sol", location: "Eusébio, CE" },
+  { id: 6, src: "/images/building6.jpg", name: "Residencial Jardim", location: "Maracanaú, CE" },
+  { id: 7, src: "/images/building7.jpg", name: "Torre Norte", location: "Fortaleza, CE" },
+  { id: 8, src: "/images/building8.jpg", name: "Edifício Mar", location: "Cumbuco, CE" },
+  { id: 9, src: "/images/building9.jpg", name: "Residencial Lagoa", location: "Pacatuba, CE" },
 ];
 
 // Hero images array - includes the original aerial view plus building photos
@@ -228,7 +228,7 @@ function App() {
             {portfolioImages.map((item, idx) => (
               <div
                 key={idx}
-                onClick={() => window.open(item.src, "_blank")}
+                onClick={() => navigate(`/project/${item.id}`)}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-1"
               >
                 {/* Project Image */}
