@@ -90,18 +90,36 @@ const ProjectDetail: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   
-  const project = projectsData.find(p => p.id === parseInt(id || '0'));
-
+  const currentId = parseInt(id || '1');
+  const project = projectsData.find(p => p.id === currentId);
+  
+  // Navigation functions
+  const navigateToProject = (projectId: number) => {
+    navigate(`/project/${projectId}`);
+  };
+  
+  const goToPrevious = () => {
+    const currentIndex = projectsData.findIndex(p => p.id === currentId);
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : projectsData.length - 1;
+    navigateToProject(projectsData[prevIndex].id);
+  };
+  
+  const goToNext = () => {
+    const currentIndex = projectsData.findIndex(p => p.id === currentId);
+    const nextIndex = currentIndex < projectsData.length - 1 ? currentIndex + 1 : 0;
+    navigateToProject(projectsData[nextIndex].id);
+  };
+  
   if (!project) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Projeto não encontrado</h1>
           <button 
-            onClick={() => navigate('/projects')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
           >
-            Voltar aos Projetos
+            Voltar ao Início
           </button>
         </div>
       </div>
@@ -109,23 +127,88 @@ const ProjectDetail: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header with Back Button */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <button 
-            onClick={() => navigate('/projects')}
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Voltar aos Projetos
-          </button>
+    <div className="min-h-screen bg-gray-600">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex items-center justify-between">
+              <button 
+                onClick={() => navigate('/')}
+                className="flex items-center text-gray-600 hover:text-gray-900 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Voltar ao Início
+              </button>
+              <h1 className="text-2xl font-bold text-gray-900">{project.name}</h1>
+              <div className="w-32"></div> {/* Spacer for centering */}
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+        {/* Navigation Arrows - Positioned beside the modal */}
+        <div className="hidden lg:block">
+          {/* Left Arrow */}
+          <button 
+            onClick={goToPrevious}
+            className="fixed left-8 top-1/2 transform -translate-y-1/2 z-10 p-4 rounded-full bg-white shadow-lg hover:shadow-xl text-gray-600 hover:text-gray-900 transition-all duration-200 group border border-gray-200"
+            title="Projeto anterior"
+          >
+            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Arrow */}
+          <button 
+            onClick={goToNext}
+            className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10 p-4 rounded-full bg-white shadow-lg hover:shadow-xl text-gray-600 hover:text-gray-900 transition-all duration-200 group border border-gray-200"
+            title="Próximo projeto"
+          >
+            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          {/* Project Counter */}
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10 bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+            <span className="text-sm text-white font-medium">
+              {projectsData.findIndex(p => p.id === currentId) + 1} de {projectsData.length}
+            </span>
+          </div>
+        </div>
+
+        {/* Mobile Navigation - Below header */}
+        <div className="lg:hidden mb-6">
+          <div className="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+            <button 
+              onClick={goToPrevious}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-all duration-200"
+              title="Projeto anterior"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <span className="text-sm text-gray-600 font-medium">
+              {projectsData.findIndex(p => p.id === currentId) + 1} de {projectsData.length}
+            </span>
+            
+            <button 
+              onClick={goToNext}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-all duration-200"
+              title="Próximo projeto"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Project Image */}
           <div className="relative h-96 overflow-hidden">
