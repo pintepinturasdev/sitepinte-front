@@ -180,10 +180,10 @@ const Projects = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8">
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium text-sm transition">
               Exterior Painting
             </button>
