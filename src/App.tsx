@@ -228,7 +228,7 @@ function App() {
             {portfolioImages.map((item, idx) => (
               <div
                 key={idx}
-                onClick={() => navigate(`/project/${item.id}`)}
+                onClick={() => navigate(`/projects`)}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-1"
               >
                 {/* Project Image */}
