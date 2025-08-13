@@ -68,14 +68,14 @@ function App() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition cursor-pointer">Início</a>
-                <a onClick={() => scrollToSection('portfolio')} href="#portfolio" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition cursor-pointer">Portfólio</a>
-                <a onClick={() => scrollToSection('about')} href="#about" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition cursor-pointer">Sobre</a>
-                <a onClick={() => scrollToSection('contact')} href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition cursor-pointer">Contato</a>
+                <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Início</a>
+                <a onClick={() => scrollToSection('portfolio')} href="#portfolio" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Portfólio</a>
+                <a onClick={() => scrollToSection('about')} href="#about" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Sobre</a>
+                <a onClick={() => scrollToSection('contact')} href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-lg font-medium transition cursor-pointer">Contato</a>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-lg font-medium transition">
                 Solicitar Orçamento
               </button>
             </div>
